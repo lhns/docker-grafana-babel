@@ -7,7 +7,7 @@ RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o 
 RUN apk add npm \
  && npm install --save-dev @babel/core @babel/cli @babel/preset-env \
  && mkdir public2/ \
- && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --plugins=@babel/plugin-transform-optional-chaining,@babel/plugin-transform-nullish-coalescing-operator \
+ && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --plugins=@babel/plugin-transform-nullish-coalescing-operator,@babel/plugin-transform-optional-chaining,@babel/plugin-transform-arrow-functions \
  && rm -Rf node_modules \
  && apk del npm
 
