@@ -5,7 +5,7 @@ USER root
 RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o '?\.' {} + | wc -l || true
 
 RUN apk add nano npm \
- && npm install --save-dev @babel/core @babel/cli @babel/preset-env \
+ && npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/plugin-transform-class-properties \
  && mkdir public2/ \
  && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --plugins=@babel/plugin-transform-nullish-coalescing-operator,@babel/plugin-transform-optional-chaining,@babel/plugin-transform-classes,@babel/plugin-transform-arrow-functions \
  && find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec sed -i 's/(?<!:)//g' {} + \
