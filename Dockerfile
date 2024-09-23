@@ -4,10 +4,11 @@ USER root
 
 RUN apk add npm \
  && npm install --save-dev @babel/core @babel/cli @babel/preset-env \
- && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --plugins @babel/plugin-transform-optional-chaining,@babel/plugin-transform-nullish-coalescing-operator \
+ && mkdir public2
+ && node_modules/.bin/babel public/ --out-dir public2/ --ignore '*/dashboards/*' --plugins @babel/plugin-transform-optional-chaining,@babel/plugin-transform-nullish-coalescing-operator \
  && rm -Rf node_modules \
  && apk del npm
 
-RUN find public/ -type f -exec grep -l '\\?\\.' {} + || true
+RUN find public2/ -type f -exec grep -l '\\?\\.' {} + || true
 
 USER 472
