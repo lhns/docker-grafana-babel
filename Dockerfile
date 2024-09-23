@@ -2,7 +2,7 @@ FROM grafana/grafana:11.2.0
 
 USER root
 
-RUN find public/ -type f -not -path '*/dashboards/*' -exec grep -o '\\?\\.' {} + | wc -l || true
+RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o '\\?\\.' {} + | wc -l || true
 
 RUN apk add npm \
  && npm install --save-dev @babel/core @babel/cli @babel/preset-env \
@@ -10,6 +10,6 @@ RUN apk add npm \
  && rm -Rf node_modules \
  && apk del npm
 
-RUN find public/ -type f -not -path '*/dashboards/*' -exec grep -o '\\?\\.' {} + | wc -l || true
+RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o '\\?\\.' {} + | wc -l || true
 
 USER 472
