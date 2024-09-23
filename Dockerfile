@@ -4,7 +4,7 @@ USER root
 
 RUN apk add npm \
  && npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/plugin-transform-nullish-coalescing-operator \
- && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --presets=@babel/plugin-transform-nullish-coalescing-operator \
+ && node_modules/.bin/babel public/ --out-dir public/ --ignore '*/dashboards/*' --plugins @babel/plugin-transform-nullish-coalescing-operator \
  && rm -Rf node_modules \
  && apk del npm
 
