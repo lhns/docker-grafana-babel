@@ -7,5 +7,5 @@ Workaround for https://github.com/grafana/grafana/issues/89792
 ## Docker Image
 
 ```sh
-docker pull ghcr.io/lhns/grafana-babel:11.2.2
+docker pull ghcr.io/lhns/grafana-babel:11.5.1
 ```
