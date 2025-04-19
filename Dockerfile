@@ -11,7 +11,8 @@ RUN apk add nano npm \
  && apk del npm
 
 # transform xe.match(/\b((?<!:)\w+_(total|sum|count)(?!:))\b/); to xe.match(/\b(\w+_(total|sum|count)(?!:))\b/);
-RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec sed -i 's/(?<!:)//g' {} +
+RUN echo "Removing negative lookbehinds..." \
+ && find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -oE '.{0,10}\(\?<[!=].{0,60}' {} + -exec sed -iE 's/(\(\?<![^)]*\))//g' {} +
 
 #RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o '?\.' {} + | wc -l || true
 
