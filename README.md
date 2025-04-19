@@ -4,6 +4,8 @@ This is a docker image of [grafana](https://github.com/grafana/grafana) with all
 
 Workaround for https://github.com/grafana/grafana/issues/89792
 
+I use [ios-safari-remote-debug-kit](https://github.com/HimbeersaftLP/ios-safari-remote-debug-kit) for debugging the transformed version.
+
 ## Docker Image
 
 ```sh
