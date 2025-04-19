@@ -11,6 +11,6 @@ RUN apk add nano npm \
  && apk del npm
 
 RUN echo "Removing negative lookbehinds..." \
- && find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -oE '.{0,10}\(\?<[!=].{0,60}' {} + -exec sed -iE 's/(\(\?<![^)]*\))//g' {} +
+ && find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -Eo '.{0,10}\(\?<[!=].{0,60}' {} + -exec sed -Ei 's/(\(\?<![^)]*\))//g' {} +
 
 USER 472
