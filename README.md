@@ -9,5 +9,5 @@ I use [ios-safari-remote-debug-kit](https://github.com/HimbeersaftLP/ios-safari-
 ## Docker Image
 
 ```sh
-docker pull ghcr.io/lhns/grafana-babel:11.5.1
+docker pull ghcr.io/lhns/grafana-babel:11.6.0
 ```
