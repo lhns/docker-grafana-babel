@@ -1,6 +1,9 @@
-FROM grafana/grafana:13.2.2
+FROM grafana/grafana:13.2.4
 
 USER root
+
+# Base was built before the eMudhra CA removal; need ca-certificates-bundle >= 20261020-r0.
+RUN apk upgrade --no-cache ca-certificates-bundle
 
 #RUN find public/ -type f -name '*.js' -not -path '*/dashboards/*' -exec grep -o '?\.' {} + | wc -l || true
 
